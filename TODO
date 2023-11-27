@@ -1,6 +1,6 @@
 [] MOBS
     [] RANDOMLY GENERATED
-    [] INCREASING DIFFICULTY
+    [/] INCREASING DIFFICULTY
     [] MODIFIERS -> Better Rarity
 [] INVENTORY
     [x] Show Equipped
@@ -19,7 +19,7 @@
     [x] RESET SAVE
 [/] Actions
     [] Training
-
+    [] Actions class?
 [/] GAME LOOP
     [] Stop action if resource = 0
     [] Resting Action? Regain all stats

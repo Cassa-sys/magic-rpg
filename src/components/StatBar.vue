@@ -5,6 +5,7 @@ import {gameControl} from "@/components/game-loop";
 </script>
 
 <template>
+  <button style="position: absolute;" @click="player.rest()">Rest</button>
   <button style="position: absolute;  right: 0px;" @click="gameControl.pauseGame()">{{ gameControl.state }}</button>
   <h1 style="text-align: center">{{player.name}}</h1>
   <table>
@@ -41,10 +42,10 @@ import {gameControl} from "@/components/game-loop";
       </td>
     </tr>
     <tr>
-      <th>Action: {{player.action}}</th>
+      <th>Action: {{player.action.actionName}}</th>
       <td style="width: 100%">
         <div class="w3-dark-grey" style="width: 100%">
-          <div class="w3-container bar w3-center" v-bind:style="{width: ((player.actionProgress/player.actionMax)*100 + '%'), backgroundColor: player.actionColor}">{{player.actionProgress}}/{{player.actionMax}}</div>
+          <div class="w3-container bar w3-center" v-bind:style="{width: ((player.action.actionProgress/player.action.actionMax)*100 + '%'), backgroundColor: player.action.actionColor}">{{player.action.actionProgress}}/{{player.action.actionMax}}</div>
         </div>
       </td>
     </tr>
