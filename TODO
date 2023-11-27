@@ -1,0 +1,25 @@
+[] MOBS
+    [] RANDOMLY GENERATED
+    [] INCREASING DIFFICULTY
+    [] MODIFIERS -> Better Rarity
+[] INVENTORY
+    [x] Show Equipped
+    [] RANDOMLY GENERATED LOOT
+        [] Upon defeating enemy gain loot
+        [x] when max don't add item
+[] MAGIC
+    [] CUSTOM SPELLS
+    [] RESEARCH
+[] SKILLS
+    [] MORE SKILLS
+[x] SAVE
+    [x] LOAD GAME
+    [] SAVE AUTOMATICALLY EVERY MINUTE
+[x] SETTINGS
+    [x] RESET SAVE
+[/] Actions
+    [] Training
+
+[/] GAME LOOP
+    [] Stop action if resource = 0
+    [] Resting Action? Regain all stats
