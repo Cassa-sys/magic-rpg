@@ -12,6 +12,7 @@ import Monster from "@/components/Tabs/Monster.vue";
 import Inventory from "@/components/Tabs/Equipment.vue";
 import {gameControl} from "@/components/game-loop";
 import ResourceBar from "@/components/ResourceBar.vue";
+import SkillButton from "@/components/SkillButton.vue";
 let gameName = "RPG Game"
 let gameVersion = "Alpha 1.0"
 
@@ -74,7 +75,7 @@ let loadedSave = ref(JSON.parse(localStorage.getItem("rpgSave")))
           <Inventory></Inventory>
         </Adventure>
         <Magic></Magic>
-        <Skills></Skills>
+        <Skills><SkillButton></SkillButton> </Skills>
         <Player></Player>
         <Settings></Settings>
       </Tabs>

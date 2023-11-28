@@ -79,8 +79,9 @@ export let player = reactive({
     monsterAttack: 0, //attack damage
     monsterProgress:0, //progress on attack
     monsterProgressMax: 0, //max time for their action
+    monsterAdjective: {},
 
-
+    playerAttack: 10,
 
     levelUp: function() {
         if(this.exp>=this.expMax) {
