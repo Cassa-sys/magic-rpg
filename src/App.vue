@@ -28,7 +28,7 @@ function loadGame() {
   showMenu.value=false;
 }
 function initializeGame() {
-  if(confirm("This will wipe any save you have")==true) {
+  if(confirm("This will wipe any save you have")===true) {
     showMenu.value=false;
   }
 }
@@ -38,6 +38,8 @@ let loadedSave = ref(JSON.parse(localStorage.getItem("rpgSave")))
 
 <template>
 <!--  This is the menu that pops up at start; with new game, load etc-->
+<!--  Temporarily commented out for dev testing-->
+  <!--
   <div style="position: absolute; width: 30%;height: 30%; right: 35%; background-color: dimgrey; top:30%" class="w3-border w3-container" v-if="showMenu">
     <h1>Welcome to {{gameName}}</h1>
     <span>Version: {{gameVersion}}</span>
@@ -50,12 +52,14 @@ let loadedSave = ref(JSON.parse(localStorage.getItem("rpgSave")))
       <span>Time of last save: {{loadedSave.date}}</span>
     </div>
   </div>
+  -->
+
   <div>
 
     <button @click="saveGame()">Save</button>
     <button @click="loadGame()">Load</button>
     <button @click="player.exp+=1000">XPUP</button>
-    <button @click="player.swapAction('Magic', 100, 'Red', 1, () => {player.health+=100;player.mana+=100}, 'StaminaHealthMana')">Magic</button>
+    <button @click="player.swapAction('Magic', 100, 'Red', 1, 'Health', () => {player.health+=100})">Magic</button>
     <button @click="gameID()">Loop</button>
   </div>
 
