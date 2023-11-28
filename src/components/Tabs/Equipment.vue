@@ -101,7 +101,7 @@
   </div>
 
 
-  <button @click="addItem('Common','Cosmos', 'Swordy', '+10 HP', () => {player.health+=10; player.maxHealth+=10}, () => {player.health-=10; player.maxHealth-=10})">Add item</button>
+  <button @click="addItem('Common','Cosmos', 'Swordy', '+10 HP', () => {player.health+=10; player.healthMax+=10}, () => {player.health-=10; player.healthMax-=10})">Add item</button>
   <button @click="equipItem(0)">Equip 0</button>
   <br>
 

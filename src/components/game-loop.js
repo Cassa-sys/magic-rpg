@@ -13,7 +13,7 @@ export const gameControl = reactive({
             //every x ticks do action
             if(this.tickCount===tickSpeed) {
                 player.action.actionProgress++; //increase the players current action
-                if(player.exp>=player.maxXP) player.levelUp(); //check if player can level up
+                if(player.exp>=player.expMax) player.levelUp(); //check if player can level up
 
 
 
@@ -38,7 +38,7 @@ export const gameControl = reactive({
                 }
 
                 //if resting and all bars at max, then go back to previous action
-                if(player.action.actionName==='Resting' && (player.health===player.maxHealth) && (player.mana===player.maxMana) && (player.stamina===player.maxStamina)) {
+                if(player.action.actionName==='Resting' && (player.health===player.healthMax) && (player.mana===player.manaMax) && (player.stamina===player.staminaMax)) {
                     player.action=player.tempAction;
                 }
 

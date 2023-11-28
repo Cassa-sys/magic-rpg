@@ -12,20 +12,26 @@
 </script>
 
 <template>
-  <table style="width: 100%" class="w3-table w3-bordered">
-    <span v-for="skill in skills" >
-      <tr>
-        <th style="width: 10%;">{{skill.name}}</th>
+  <table class="w3-table w3-bordered w3-hoverable" style="width: 100%; table-layout: auto">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Conflicts</th>
+      <th>Price</th>
+    </tr>
+
+<!--    Display skills-->
+    <tr v-for="skill in skills" >
+        <td style="">{{skill.name}}</td>
         <td style="width: 50%;">{{skill.description}}</td>
         <td style="width: 30%">Skill Conflicts: {{skill.conflicts}}</td>
         <td style="width: 10%; white-space: nowrap">Cost: {{skill.cost}} Skill Points</td>
         <td>
           <button class="w3-btn w3-border" @click="addSkill(skill)">Acquire Skill</button>
         </td>
-      </tr>
-    </span>
+    </tr>
   </table>
-  <button @click="addSkill('Pyromancy', 'You\'ve always loved fire.', () => {player.maxMana*=10})">Add Skill</button>
+  <button @click="addSkill('Pyromancy', 'You\'ve always loved fire.', () => {player.manaMax*=10})">Add Skill</button>
 </template>
 
 <style scoped>

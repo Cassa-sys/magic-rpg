@@ -12,7 +12,7 @@ export const skills = reactive([
         conflicts: "Keen Mind, Unstoppable",
         effect: function () {
             player.health*=5;
-            player.maxHealth*=5;
+            player.healthMax*=5;
             player.healthMulti+=4;
             removeSkill("Healthy Body");
             removeSkill("Keen Mind");
@@ -26,7 +26,7 @@ export const skills = reactive([
         conflicts: "Healthy Body, Unstoppable",
         effect: function () {
             player.mana*=5;
-            player.maxMana*=5;
+            player.manaMax*=5;
             player.manaMulti+=4;
             removeSkill("Healthy Body");
             removeSkill("Keen Mind");
@@ -40,7 +40,7 @@ export const skills = reactive([
         conflicts: "Healthy Body, Keen Mind",
         effect: function () {
             player.stamina*=5;
-            player.maxStamina*=5;
+            player.staminaMax*=5;
             player.staminaMulti+=4;
             removeSkill("Healthy Body");
             removeSkill("Keen Mind");

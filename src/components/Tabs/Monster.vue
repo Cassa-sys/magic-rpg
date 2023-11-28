@@ -1,10 +1,17 @@
 <script setup>
 import {player} from "@/components/player";
-function changeMonster(monsterName, monsterHealth) {
-  player.monsterName=monsterName;
-  player.monsterHP=monsterHealth;
-  player.monsterMax=monsterHealth;
-  player.monsterProgress = 0;
+import ResourceBar from "@/components/ResourceBar.vue";
+let monsterNames = [
+    ""
+];
+let monsterAdjectives = [
+
+]
+function generateMonster() {
+  player.monsterName=monsterNames[Math.random()*monsterNames.length]; //generate randomName
+  player.monsterHPMax=10 + 10*(player.stage*player.area) + Math.round(Math.random()*this.monstersDefeated);
+  player.monsterHP=player.monsterHPMax;
+  player.monsterProgress = 0; //reset progress of monster attack
   player.monsterAttack= 10 + 10*(player.stage*player.area) + Math.round(Math.random()*this.monstersDefeated)
 }
 function advanceStage() {
@@ -52,10 +59,12 @@ function advanceArea() {
     <tr>
       <th>{{ player.monsterName }}:</th>
       <td style="width: 100%">
-        <div class="w3-dark-grey" style="width: 100%">
-          <div class="w3-container bar w3-center w3-red" v-bind:style="{width: ((player.monsterHP/player.monsterMax)*100 + '%')}">{{player.monsterHP}}/{{player.monsterMax}}</div>
-        </div>
+        <ResourceBar color="red" type="monsterHP"></ResourceBar>
       </td>
+    </tr>
+    <tr>
+      <td>Attacking</td>
+      <td><ResourceBar color="orange" type="monsterProgress"></ResourceBar></td>
     </tr>
   </table>
   <button class="w3-btn w3-bar w3-border" style="width: 100%">Start Combat</button>

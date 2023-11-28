@@ -11,6 +11,7 @@ import Player from "@/components/Tabs/Player.vue";
 import Monster from "@/components/Tabs/Monster.vue";
 import Inventory from "@/components/Tabs/Equipment.vue";
 import {gameControl} from "@/components/game-loop";
+import ResourceBar from "@/components/ResourceBar.vue";
 let gameName = "RPG Game"
 let gameVersion = "Alpha 1.0"
 
@@ -67,7 +68,9 @@ let loadedSave = ref(JSON.parse(localStorage.getItem("rpgSave")))
     <div style="width: 80%;height: 100%">
       <Tabs>
         <Adventure>
-          <Monster />
+          <Monster>
+            <StatBar><ResourceBar></ResourceBar></StatBar>
+          </Monster>
           <Inventory></Inventory>
         </Adventure>
         <Magic></Magic>
@@ -77,7 +80,7 @@ let loadedSave = ref(JSON.parse(localStorage.getItem("rpgSave")))
       </Tabs>
     </div>
     <div style="width: 20%" class="w3-border">
-      <StatBar />
+      <StatBar><ResourceBar></ResourceBar></StatBar>
     </div>
   </div>
 

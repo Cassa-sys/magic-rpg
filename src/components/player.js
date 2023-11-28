@@ -6,23 +6,23 @@ export let player = reactive({
     //different resources
     //hp
     health: 100,
-    maxHealth: 100,
+    healthMax: 100,
     healthMulti: 1, //multiplier to max gain
 
     //mana
     mana: 100,
-    maxMana: 100,
+    manaMax: 100,
     manaMulti: 1, //multiplier to max gain
 
     //energy
     stamina: 100,
-    maxStamina: 100,
+    staminaMax: 100,
     staminaMulti:1, //multiplier to max gain
 
     //level
     level: 1,
     exp: 0,
-    maxXP:100,
+    expMax:100,
 
     //skills
     skillPoints: 0,
@@ -53,9 +53,9 @@ export let player = reactive({
     rest: function() {
         this.tempAction = this.action;
         this.swapAction('Resting', 0, 'Dark Gray', -1, 'Health Mana Stamina',() => {
-            this.health = (this.health > this.maxHealth) ? this.maxHealth : this.health;
-            this.mana = (this.mana > this.maxMana) ? this.maxMana : this.mana;
-            this.stamina = (this.stamina > this.maxStamina) ? this.maxStamina : this.stamina;
+            this.health = (this.health > this.healthMax) ? this.healthMax : this.health;
+            this.mana = (this.mana > this.manaMax) ? this.manaMax : this.mana;
+            this.stamina = (this.stamina > this.staminaMax) ? this.staminaMax : this.stamina;
         })
     },
     doNothing: function() {
@@ -75,7 +75,7 @@ export let player = reactive({
     monstersDefeated: 0,
     monsterName: "Nothing",
     monsterHP: 0,
-    monsterMax: 0,
+    monsterHPMax: 0,
     monsterAttack: 0, //attack damage
     monsterProgress:0, //progress on attack
     monsterProgressMax: 0, //max time for their action
@@ -83,17 +83,17 @@ export let player = reactive({
 
 
     levelUp: function() {
-        if(this.exp>=this.maxXP) {
-            this.exp= this.exp-this.maxXP;
+        if(this.exp>=this.expMax) {
+            this.exp= this.exp-this.expMax;
             this.level++;
             this.health+=20*this.healthMulti;
-            this.maxHealth+=20*this.healthMulti;
+            this.healthMax+=20*this.healthMulti;
             this.mana+=20*this.manaMulti;
-            this.maxMana+=20*this.manaMulti;
+            this.manaMax+=20*this.manaMulti;
             this.stamina+=20*this.staminaMulti;
-            this.maxStamina+=20*this.staminaMulti;
+            this.staminaMax+=20*this.staminaMulti;
             this.skillPoints+=Math.round(Math.random()*2)+1;
-            this.maxXP+=(this.level*100);
+            this.expMax+=(this.level*100);
         }
     },
     load: function () {
