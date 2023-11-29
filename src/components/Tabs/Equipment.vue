@@ -23,23 +23,27 @@
   let rarity = [
     {
       type: "Common",
-      chance: 700,
+      chance: 600,
     },
     {
       type: "Uncommon",
-      chance: 200,
+      chance: 300,
+      effect: () => {this.stage+=3}
     },
     {
       type: "Rare",
-      chance: 100
+      chance: 140,
+      effect: () => {this.stage+=5}
     },
     {
       type: "Epic",
-      chance: 80
+      chance: 50,
+      effect: () => {this.stage+=8}
     },
     {
       type: "Legendary",
-      chance: 20
+      chance: 10,
+      effect: () => {this.area+=1; this.stage+=10}
     }
   ]
   let rarityColors = ["Lavender", "Green", "Blue", "Purple", "Gold"]

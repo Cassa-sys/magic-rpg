@@ -61,6 +61,7 @@ export const monsterAdjectives = [
         adjective: "Healthy",
         monsterEffect: () => {
             player.monsterHPMax*=2;
+            player.monsterHP = player.monsterHPMax;
         },
         effect: () => {
             this.stage = player.stage;

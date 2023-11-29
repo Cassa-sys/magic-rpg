@@ -42,6 +42,7 @@ export let player = reactive({
         actionResult: function () {}, //the effect that takes place when action done
     },
     swapAction: function(actionName, actionMax, actionColor, actionCost, actionResource, actionResult) {
+        this.action.actionProgress=0;
         this.action.actionName = actionName;
         this.action.actionMax = actionMax;
         this.action.actionColor = actionColor;
@@ -51,8 +52,7 @@ export let player = reactive({
     },
     tempAction: {},
     rest: function() {
-        this.tempAction = this.action;
-        this.swapAction('Resting', 0, 'Dark Gray', -1, 'Health Mana Stamina',() => {
+        this.swapAction('Resting', 1, 'Dark Gray', -1, 'Health Mana Stamina',() => {
             this.health = (this.health > this.healthMax) ? this.healthMax : this.health;
             this.mana = (this.mana > this.manaMax) ? this.manaMax : this.mana;
             this.stamina = (this.stamina > this.staminaMax) ? this.staminaMax : this.stamina;
