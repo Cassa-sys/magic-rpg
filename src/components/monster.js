@@ -72,4 +72,18 @@ export const monsterAdjectives = [
             player.healthMax -= Math.pow(this.stage, this.area);
         }
     },
+    {
+        adjective: "Tanky",
+        monsterEffect: () => {
+            player.monsterDefense*=2;
+        },
+        effect: () => {
+            this.stage = player.stage;
+            this.area = player.area;
+            player.defense += Math.pow(this.stage, this.area);
+        },
+        remove: () => {
+            player.healthMax -= Math.pow(this.stage, this.area);
+        }
+    }
 ]

@@ -3,12 +3,15 @@ export let player = reactive({
     name: "Player",
     date: Date(),
 
+
+    defense: 5,
+    playerAttack: 10,
+
     //different resources
     //hp
     health: 100,
     healthMax: 100,
     healthMulti: 1, //multiplier to max gain
-
     //mana
     mana: 100,
     manaMax: 100,
@@ -67,6 +70,83 @@ export let player = reactive({
     inventoryMax: 10,
     equipped: [],
 
+    //items, like gold
+    //["Fire", "Earth", "Water", "Air","Shadow", "Light", "Arcane"]
+    items: {
+        gold: {
+            name: "Gold",
+            amount: 0,
+            max: 5,
+            amountPerSecond: 0,
+            description:"ooo Shiny!",
+            acquired: false
+        },
+        bones: {
+            name: "Bones",
+            amount: 0,
+            max: 10,
+            amountPerSecond: 0,
+            description:"It sends shivers down your spine.",
+            acquired: false
+        },
+        fireGem: {
+            name: "Fire Gem",
+            amount: 0,
+            max: 5,
+            amountPerSecond: 0,
+            description:"Sizzling Hot.",
+            acquired: false
+        },
+        waterGem: {
+            name: "Water Gem",
+            amount: 0,
+            max: 5,
+            amountPerSecond: 0,
+            description:"Surprisingly Humid?",
+            acquired: false
+        },
+        airGem: {
+            name: "Air Gem",
+            amount: 0,
+            max: 5,
+            amountPerSecond: 0,
+            description:"Light as a Feather!",
+            acquired: false
+        },
+        earthGem: {
+            name: "Earth Gem",
+            amount: 0,
+            max: 5,
+            amountPerSecond: 0,
+            description:"Solid as a Rock.",
+            acquired: false
+        },
+        shadowGem: {
+            name: "Shadow Gem",
+            amount: 0,
+            max: 5,
+            amountPerSecond: 0,
+            description:"It reeks of bad vibes.",
+            acquired: false
+        },
+        lightGem: {
+            name: "Light Gem",
+            amount: 0,
+            max: 5,
+            amountPerSecond: 0,
+            description:"It radiates a holy aura.",
+            acquired: false
+        },
+        arcaneGem: {
+            name: "Arcane Gem",
+            amount: 0,
+            max: 5,
+            amountPerSecond: 0,
+            description:"It is bursting with power.",
+            acquired: false
+        },
+    },
+
     //monsters
     area: 1,
     maxArea: 1,
@@ -79,9 +159,8 @@ export let player = reactive({
     monsterAttack: 0, //attack damage
     monsterProgress:0, //progress on attack
     monsterProgressMax: 0, //max time for their action
+    monsterDefense: 0,
     monsterAdjective: {},
-
-    playerAttack: 10,
 
     levelUp: function() {
         if(this.exp>=this.expMax) {

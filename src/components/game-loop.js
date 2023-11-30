@@ -16,9 +16,17 @@ export const gameControl = reactive({
     },
     gameLoop: function (tickSpeed) {
         if(!this.paused) {
+            localStorage.setItem("rpgSave",JSON.stringify(player)); //save game
             //every x ticks do action
             if(this.tickCount===tickSpeed) {
                 player.action.actionProgress++; //increase the players current action
+                if(player.action.actionName=="Attack") {
+                    player.monsterProgress++;
+                    if(player.monsterProgress==player.monsterProgressMax) {
+                        player.health= player.defense-player.monsterAttack;
+                        player.monsterProgress=0;
+                    }
+                }
                 console.log("Temp Progress: " + player.tempAction.actionProgress);
                 if(player.exp>=player.expMax) player.levelUp(); //check if player can level up
 
@@ -29,11 +37,12 @@ export const gameControl = reactive({
                 if(player.action.actionResource.includes("Health")) {
                     player.health-=player.action.actionCost;
                     //go rest if not action takes health and below 0 health.
-                    if(player.health<=0) {
-                        completeAction() //only procs if done
-                        player.tempAction = {...player.action};
-                        player.rest();
-                    }
+                }
+                //we always want to cancel action if health ==0
+                if(player.health<=0) {
+                    completeAction() //only procs if done
+                    player.tempAction = {...player.action};
+                    player.rest();
                 }
                 if(player.action.actionResource.includes("Mana")) {
                     player.mana-=player.action.actionCost;
@@ -49,7 +58,6 @@ export const gameControl = reactive({
                         completeAction() //only procs if done
                         player.tempAction = {...player.action};
                         player.rest();
-
                     }
                 }
 

@@ -3,25 +3,43 @@
        [/] MORE NAMES
        [/] MORE MODIFIERS
     [x] INCREASING DIFFICULTY
-    [] MONSTER ATTACK
+    [x] MONSTER ATTACK
+    [] Fix bug where monsters insta die one hit
+
 [] INVENTORY
     [x] Show Equipped
     [] RANDOMLY GENERATED LOOT
-        [] Upon defeating enemy gain loot
+        [x] Upon defeating enemy gain loot
         [x] when max don't add item
+    [] Get the effect from modifiers and stage when determining loot
+    [] Pictures?
+
+[] STATS
+    [] Basic RPG Stats?
+        [x] ATK - Increase Physical ATK dmg
+        [x] DEF - Defense against Monsters
+        [] MAG - Increase Magical ATK dmg
+        [] AGI - Increase action speed? or just attack speed
+        [] LCK - Better odds at loot?
+
 [] MAGIC
     [] CUSTOM SPELLS
     [] RESEARCH
+
 [] SKILLS
     [] MORE SKILLS
+
 [x] SAVE
     [x] LOAD GAME
     [] SAVE AUTOMATICALLY EVERY MINUTE
+
 [x] SETTINGS
     [x] RESET SAVE
-[/] Actions
+
+[] Actions
     [] Training
     [] Actions class?
+
 [/] GAME LOOP
-    [] Stop action if resource = 0
-    [] Resting Action? Regain all stats
+    [x] Stop action if resource = 0
+    [x] Resting Action? Regain all stats

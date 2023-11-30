@@ -3,6 +3,7 @@ import {reactive, ref} from "vue";
 import {player} from "@/components/player";
 import {gameControl} from "@/components/game-loop";
 import ResourceBar from "@/components/ResourceBar.vue";
+import HoverElement from "@/components/HoverElement.vue";
 </script>
 
 <template>
@@ -51,6 +52,34 @@ import ResourceBar from "@/components/ResourceBar.vue";
       <td>{{player.skillPoints}}</td>
     </tr>
   </table>
+
+<!--  Stats-->
+  <div class="w3-center">
+    <HoverElement>
+      <template v-slot:header>
+        <h4>Stats</h4>
+      </template>
+      <p>Attack: {{player.playerAttack}}</p>
+      <p>Defense: {{player.defense}}</p>
+    </HoverElement>
+  </div>
+
+<!--  Items-->
+  <h4 class="w3-center w3-border">Items</h4>
+  <HoverElement v-for="item in player.items">
+    <template v-slot:header>
+      <div style="display: flex">
+        <p style="margin: 0px">{{item.name}}</p>
+        <p style="margin: 0px; position: absolute; right: 10px"> {{item.amount}} / {{item.max}}</p>
+      </div>
+    </template>
+    <p>{{item.amountPerSecond}}/s</p>
+    <p style="font-family: 'Times New Roman'">"{{item.description}}"</p>
+
+  </HoverElement>
+
+
+
 </template>
 
 <style scoped>

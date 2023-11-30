@@ -19,9 +19,10 @@
 </script>
 
 <template>
-  <div class="w3-btn w3-border" @mouseenter="mouseEnter($event)" @mouseleave="mouseLeave()" @mousemove="mouseMove($event)">
+  <div class="" @mouseenter="mouseEnter($event)" @mouseleave="mouseLeave()" @mousemove="mouseMove($event)" style="width: 100%; padding-top: 4px;padding-bottom: 4px">
+    <slot name="header"></slot>
   </div>
-  <div id="popup" class="w3-border" v-if="popup" style="position: absolute">
+  <div id="popup" class="w3-border" v-if="popup" style="position: absolute; background-color: lightslategrey">
     <slot></slot>
   </div>
 </template>
