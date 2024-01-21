@@ -52,7 +52,7 @@
 
 <template>
   <p style="text-align: center">Equipment</p>
-  <button @click="addItem('Swordy', 'Sword', '+10 hp', () => {player.health+=10},() => {player.health-=10})">Add Sword</button>
+  <button @click="addItem('Swordy', 'Sword', '+10 hp', () => {player.health+=10; player.healthMax+=10},() => {player.health-=10; player.healthMax-=10})">Add Sword</button>
 <!--Currently Equipped-->
   <div>
     <div style="width: 100%">

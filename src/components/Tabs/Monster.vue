@@ -18,21 +18,26 @@ function generateMonster() {
 }
 function generateLoot() {
   let random = Math.round(Math.random()*10);
-  if(random<5) {
+  console.log(random)
+  if(random<=5) {
     // 5/10 generate gold
     if(player.items["gold"].amount<player.items["gold"].max) {
-      player.items["gold"].amount+= player.stage*player.area;
+      player.items["gold"].amount++;
     }
-  } else if(random<8) {
+  } else if(random<=8) {
     // 3/10 generate bones
     if(player.items["bones"].amount<player.items["bones"].max) {
-      player.items["bones"].amount+= player.stage*player.area;
+      if(player.items["bones"].acquired==false) player.items["bones"].acquired=true;
+      player.items["bones"].amount++;
     }
-  } else if(random<9) {
+  } else if(random<=9) {
     // 1/10 generate gem
     let gems = ["fireGem", "earthGem", "waterGem", "airGem","shadowGem", "lightGem", "arcaneGem"]
-    let r = Math.round(Math.random()*gems.length);
-    player.items[gems[r]].amount++;
+    let r = Math.round(Math.random()*gems.length) -1;
+    if(player.items[gems[r]].amount<player.items[gems[r]].max) {
+      if(player.items[gems[r]].acquired==false) player.items[gems[r]].acquired=true;
+      player.items[gems[r]].amount++;
+    }
   } else {
     // 1/10 generate item
 

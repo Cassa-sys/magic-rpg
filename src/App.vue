@@ -58,40 +58,42 @@ let loadedSave = ref(JSON.parse(localStorage.getItem("rpgSave")))
   </div>
   -->
 
-  <div>
+  <div class="main">
 
-    <button @click="saveGame()">Save</button>
-    <button @click="loadGame()">Load</button>
-    <button @click="player.exp+=1000">XPUP</button>
-    <button @click="player.swapAction('Magic', 100, 'Red', 1, 'Health', () => {player.health+=100})">Magic</button>
-    <button @click="gameID()">Loop</button>
-  </div>
-
-  <div class="flex-box">
-    <div style="width: 80%;height: 100%">
-      <Tabs>
-        <Adventure>
-          <Monster>
-            <StatBar><ResourceBar></ResourceBar></StatBar>
-          </Monster>
-          <Inventory></Inventory>
-        </Adventure>
-        <Magic><Training /> <SpellCrafting /></Magic>
-        <Skills><HoverElement></HoverElement></Skills>
-        <Player></Player>
-        <Settings></Settings>
-      </Tabs>
+    <div>
+      <button @click="saveGame()">Save</button>
+      <button @click="loadGame()">Load</button>
+      <button @click="player.exp+=1000">XPUP</button>
+      <button @click="player.swapAction('Magic', 100, 'Red', 1, 'Health', () => {player.health+=100}, true)">Magic</button>
+      <button @click="gameID()">Loop</button>
     </div>
-    <div style="width: 20%" class="w3-border">
-      <StatBar>
-        <HoverElement></HoverElement>
-        <ResourceBar></ResourceBar>
-      </StatBar>
+
+    <div class="flex-box">
+      <div style="width: 80%;height: 100%">
+        <Tabs>
+          <Adventure>
+            <Monster>
+              <StatBar><ResourceBar></ResourceBar></StatBar>
+            </Monster>
+            <Inventory></Inventory>
+          </Adventure>
+          <Magic><Training /> <SpellCrafting /></Magic>
+          <Skills><HoverElement></HoverElement></Skills>
+          <Player></Player>
+          <Settings></Settings>
+        </Tabs>
+      </div>
+      <div style="width: 20%" class="w3-border">
+        <StatBar>
+          <HoverElement></HoverElement>
+          <ResourceBar></ResourceBar>
+        </StatBar>
+      </div>
     </div>
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </div>
-
-
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </template>
 
@@ -100,6 +102,8 @@ let loadedSave = ref(JSON.parse(localStorage.getItem("rpgSave")))
   .flex-box {
     display: flex;
   }
+
+
 </style>
 <script>
 

@@ -22,7 +22,7 @@
   <div class="" @mouseenter="mouseEnter($event)" @mouseleave="mouseLeave()" @mousemove="mouseMove($event)" style="width: 100%; padding-top: 4px;padding-bottom: 4px">
     <slot name="header"></slot>
   </div>
-  <div id="popup" class="w3-border" v-if="popup" style="position: absolute; background-color: lightslategrey">
+  <div id="popup" class="w3-border" v-if="popup" style="position: absolute; background-color: #242526">
     <slot></slot>
   </div>
 </template>

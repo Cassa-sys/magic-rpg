@@ -21,13 +21,14 @@ export const gameControl = reactive({
             //every x ticks do action
             if(this.tickCount===tickSpeed) {
                 player.action.actionProgress++; //increase the players current action
-                console.log(player.bankedActions)
+                // console.log(player.bankedActions)
+
                 if(player.action.storage) {
-                    let elem = player.bankedActions.find((element) =>element.name===player.action.actionName);
+                    let elem = player.bankedActions.find((element) => element[0]===player.action.actionName);
                     if(elem===undefined) {
                         player.bankedActions.push([player.action.actionName,player.action.actionProgress])
                     } else {
-                        elem.actionProgress=player.action.actionProgress;
+                        elem[1]=player.action.actionProgress;
                     }
                 }
 
@@ -39,7 +40,7 @@ export const gameControl = reactive({
                         player.monsterProgress=0;
                     }
                 }
-                console.log("Temp Progress: " + player.tempAction.actionProgress);
+                // console.log("Temp Progress: " + player.tempAction.actionProgress);
                 if(player.exp>=player.expMax) player.levelUp(); //check if player can level up
 
 

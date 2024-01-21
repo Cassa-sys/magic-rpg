@@ -54,9 +54,9 @@ export let player = reactive({
         this.action.actionResource = actionResource;
         this.action.actionResult = actionResult
         this.action.storage = storage
-        for(let i=0;i<this.bankedActions.length;i++) {
-            if(this.bankedActions[i].name===actionName) {
-                this.action.actionProgress=this.bankedActions[i].actionProgress;
+        for(let i=0;i<player.bankedActions.length;i++) {
+            if(player.bankedActions[i][0]===actionName) {
+                this.action.actionProgress=player.bankedActions[i][1];
             }
         }
     },
