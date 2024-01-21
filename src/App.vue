@@ -13,11 +13,13 @@ import Inventory from "@/components/Tabs/Equipment.vue";
 import {gameControl} from "@/components/game-loop";
 import ResourceBar from "@/components/ResourceBar.vue";
 import HoverElement from "@/components/HoverElement.vue";
+import SpellCrafting from "@/components/Tabs/SpellCrafting.vue";
+import Training from "@/components/Tabs/Training.vue";
 let gameName = "RPG Game"
 let gameVersion = "Alpha 1.0"
 
 let gameID =ref(function () {
-  setInterval(() => {gameControl.gameLoop(tickSpeed); console.log('test')},tickSpeed)
+  setInterval(() => {gameControl.gameLoop(tickSpeed)},tickSpeed)
 });
 let ticks = 10;
 let tickSpeed = 10;
@@ -74,7 +76,7 @@ let loadedSave = ref(JSON.parse(localStorage.getItem("rpgSave")))
           </Monster>
           <Inventory></Inventory>
         </Adventure>
-        <Magic></Magic>
+        <Magic><Training /> <SpellCrafting /></Magic>
         <Skills><HoverElement></HoverElement></Skills>
         <Player></Player>
         <Settings></Settings>

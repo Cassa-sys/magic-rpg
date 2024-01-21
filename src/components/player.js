@@ -43,8 +43,9 @@ export let player = reactive({
         actionCost: 0, //how much it decreases by per game tick
         actionResource: "", //the resource an action takes e.g. Health
         actionResult: function () {}, //the effect that takes place when action done
+        storage: false, //if the skill tracks how far it has gone
     },
-    swapAction: function(actionName, actionMax, actionColor, actionCost, actionResource, actionResult) {
+    swapAction: function(actionName, actionMax, actionColor, actionCost, actionResource, actionResult, storage) {
         this.action.actionProgress=0;
         this.action.actionName = actionName;
         this.action.actionMax = actionMax;
@@ -52,17 +53,25 @@ export let player = reactive({
         this.action.actionCost = actionCost;
         this.action.actionResource = actionResource;
         this.action.actionResult = actionResult
+        this.action.storage = storage
+        for(let i=0;i<this.bankedActions.length;i++) {
+            if(this.bankedActions[i].name===actionName) {
+                this.action.actionProgress=this.bankedActions[i].actionProgress;
+            }
+        }
     },
     tempAction: {},
+    bankedActions:[],
+
     rest: function() {
         this.swapAction('Resting', 1, 'Dark Gray', -1, 'Health Mana Stamina',() => {
             this.health = (this.health > this.healthMax) ? this.healthMax : this.health;
             this.mana = (this.mana > this.manaMax) ? this.manaMax : this.mana;
             this.stamina = (this.stamina > this.staminaMax) ? this.staminaMax : this.stamina;
-        })
+        }, false)
     },
     doNothing: function() {
-        this.swapAction("Nothing", 0, 'Dark Gray', 0, '', () => {})
+        this.swapAction("Nothing", 0, 'Dark Gray', 0, '', () => {},false)
     },
 
     //inventory
@@ -79,7 +88,7 @@ export let player = reactive({
             max: 5,
             amountPerSecond: 0,
             description:"ooo Shiny!",
-            acquired: false
+            acquired: true
         },
         bones: {
             name: "Bones",

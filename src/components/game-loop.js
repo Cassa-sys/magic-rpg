@@ -1,5 +1,6 @@
 import {player} from "@/components/player";
 import {camelize, reactive} from "vue";
+import {training} from "@/components/Training";
 function completeAction() {
     if(player.action.actionProgress>=player.action.actionMax) {
         player.action.actionResult()
@@ -20,9 +21,20 @@ export const gameControl = reactive({
             //every x ticks do action
             if(this.tickCount===tickSpeed) {
                 player.action.actionProgress++; //increase the players current action
-                if(player.action.actionName=="Attack") {
+                console.log(player.bankedActions)
+                if(player.action.storage) {
+                    let elem = player.bankedActions.find((element) =>element.name===player.action.actionName);
+                    if(elem===undefined) {
+                        player.bankedActions.push([player.action.actionName,player.action.actionProgress])
+                    } else {
+                        elem.actionProgress=player.action.actionProgress;
+                    }
+                }
+
+
+                if(player.action.actionName==="Attack") {
                     player.monsterProgress++;
-                    if(player.monsterProgress==player.monsterProgressMax) {
+                    if(player.monsterProgress===player.monsterProgressMax) {
                         player.health= player.defense-player.monsterAttack;
                         player.monsterProgress=0;
                     }

@@ -66,17 +66,19 @@ import HoverElement from "@/components/HoverElement.vue";
 
 <!--  Items-->
   <h4 class="w3-center w3-border">Items</h4>
-  <HoverElement v-for="item in player.items">
-    <template v-slot:header>
-      <div style="display: flex">
-        <p style="margin: 0px">{{item.name}}</p>
-        <p style="margin: 0px; position: absolute; right: 10px"> {{item.amount}} / {{item.max}}</p>
-      </div>
-    </template>
-    <p>{{item.amountPerSecond}}/s</p>
-    <p style="font-family: 'Times New Roman'">"{{item.description}}"</p>
+  <div v-for="item in player.items">
+    <HoverElement v-if="item.acquired">
+      <template v-slot:header>
+        <div style="display: flex">
+          <p style="margin: 0px">{{item.name}}</p>
+          <p style="margin: 0px; position: absolute; right: 10px"> {{item.amount}} / {{item.max}}</p>
+        </div>
+      </template>
+      <p>{{item.amountPerSecond}}/s</p>
+      <p style="font-family: 'Times New Roman'">"{{item.description}}"</p>
+    </HoverElement>
 
-  </HoverElement>
+  </div>
 
 
 

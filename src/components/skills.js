@@ -1,7 +1,11 @@
 import {reactive} from "vue";
 import {player} from "@/components/player";
+import {training} from "@/components/Training";
 function removeSkill(skillName) {
-    skills.splice(skills.findIndex((element) => element.name ==skillName),1);
+    skills.splice(skills.findIndex((element) => element.name ===skillName),1);
+}
+function unlockTraining(name) {
+    training.find((element) => element.name===name).unlocked=true;
 }
 
 export const skills = reactive([
@@ -11,6 +15,7 @@ export const skills = reactive([
         cost: 0,
         conflicts: "Keen Mind, Unstoppable",
         effect: function () {
+            unlockTraining("Growing Pain")
             player.health*=5;
             player.healthMax*=5;
             player.healthMulti+=4;

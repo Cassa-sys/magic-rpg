@@ -91,27 +91,27 @@ function decreaseArea() {
   }
 }
 function attack() {
-  if(player.monsterName=="Nothing") generateMonster();
+  if(player.monsterName==="Nothing") generateMonster();
   this.cost = 1;
   player.swapAction("Attack",10,"Red",this.cost,"Stamina",() => {
     player.monsterHP= player.monsterDefense - player.playerAttack;
     if(player.monsterHP<=0) {
       advanceStage(true)
     }
-  })
+  },false)
 }
 </script>
 
 <template>
 <div style="display: flex;" class="w3-bar">
-  <button class="w3-btn w3-border" style="width: 20%" @click="decreaseArea()" :disabled="player.area==1">&lt&lt-</button>
-  <button class="w3-btn w3-border" style="width: 20%" @click="decreaseStage()" :disabled="player.stage==1">&lt-</button>
+  <button class="w3-btn w3-border" style="width: 20%" @click="decreaseArea()" :disabled="player.area===1">&lt&lt-</button>
+  <button class="w3-btn w3-border" style="width: 20%" @click="decreaseStage()" :disabled="player.stage===1">&lt-</button>
   <div style="display: flex; width: 20%" class="w3-border">
     <p class="w3-center" style="width: 100%">Area: {{player.area}}</p>
     <br>
     <p class="w3-center" style="width: 100%">Stage: {{player.stage}}</p>
   </div>
-  <button class="w3-btn w3-border" style="width: 20%" @click="advanceStage(false)" :disabled="player.stage<player.maxStage || !(player.area<player.maxArea) || player.stage==10">-></button>
+  <button class="w3-btn w3-border" style="width: 20%" @click="advanceStage(false)" :disabled="player.stage<player.maxStage || !(player.area<player.maxArea) || player.stag===10">-></button>
   <button class="w3-btn w3-border noPadding" style="width: 20%" @click="advanceArea()" :disabled="player.area>=player.maxArea">->></button>
 </div>
 
