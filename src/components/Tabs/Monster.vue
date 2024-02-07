@@ -3,6 +3,7 @@ import {player} from "@/components/player";
 import ResourceBar from "@/components/ResourceBar.vue";
 import {monsterNames} from "@/components/monster";
 import {monsterAdjectives} from "@/components/monster";
+import {addItem} from "@/components/inventory";
 
 
 function generateMonster() {
@@ -19,6 +20,7 @@ function generateMonster() {
 function generateLoot() {
   let random = Math.round(Math.random()*10);
   console.log(random)
+  random=10;
   if(random<=5) {
     // 5/10 generate gold
     if(player.items["gold"].amount<player.items["gold"].max) {
@@ -40,6 +42,9 @@ function generateLoot() {
     }
   } else {
     // 1/10 generate item
+    let adj;
+    monsterAdjectives.forEach((adjective) => {if(adjective.adjective === player.monsterAdjective.adjective) adj=adjective});
+    addItem("Sword", "Swordy Sword", adj.effectDescription, adj.effect, adj.remove)
 
   }
 }
@@ -148,6 +153,8 @@ function attack() {
   <p>Saved Action: {{player.tempAction.actionName}}</p>
   <p>{{player.tempAction}}</p>
   <span>{{player.action.actionResult}}</span>
+  <br>
+  <span>{{player.monsterAdjective.adjective}}</span>
 </template>
 
 <style scoped>

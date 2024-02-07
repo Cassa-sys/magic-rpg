@@ -17,12 +17,14 @@ export const monsterNames = [
 export const monsterAdjectives = [
     {
         adjective: "Furious",
+        effectDescription: "Anger Spikes within you as you hold this weapon",
         monsterEffect: () => {
             player.monsterAttack*=2;
         },
         effect:() => {
-            this.stage = player.stage;
-            this.area = player.area;
+            var equip = {};
+            equip.stage = player.stage;
+            equip.area = player.area;
             player.playerAttack += Math.pow(this.stage,this.area);
         },
         remove:() => {
@@ -31,6 +33,7 @@ export const monsterAdjectives = [
     },
     {
         adjective: "Mystical",
+        effectDescription: "You have never felt more wise. Increases Max Mana",
         monsterEffect: () => {
             player.monsterProgressMax/=2;
         },
@@ -45,6 +48,7 @@ export const monsterAdjectives = [
     },
     {
         adjective: "Cowardly",
+        effectDescription: "You could outrun a cheetah. Increases Max Stamina",
         monsterEffect: () => {
             player.monsterProgressMax*=2;
         },
@@ -59,9 +63,10 @@ export const monsterAdjectives = [
     },
     {
         adjective: "Healthy",
+        effectDescription: "You eat your vitamins every day. Increases Max Health",
         monsterEffect: () => {
             player.monsterHPMax*=2;
-            player.monsterHP = player.monsterHPMax;
+                player.monsterHP = player.monsterHPMax;
         },
         effect: () => {
             this.stage = player.stage;
@@ -74,6 +79,7 @@ export const monsterAdjectives = [
     },
     {
         adjective: "Tanky",
+        effectDescription: "You are tougher than an elephant. Increases Max Defense",
         monsterEffect: () => {
             player.monsterDefense*=2;
         },

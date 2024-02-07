@@ -43,3 +43,12 @@
 [/] GAME LOOP
     [x] Stop action if resource = 0
     [x] Resting Action? Regain all stats
+
+
+
+[] BUGS
+    [] Something is wrong with the area
+    [] Redo Monster Stats
+    [] Stats not updating?
+    [] Monster Generated Equipment Not Equippable
+        [] Refactor Equipment?
